@@ -33,5 +33,12 @@ export const useStyles = makeStyles(theme => ({
         height: 'auto',
         margin: '10px',
         padding: '10px'
+    },
+    appBar: {
+        flexGrow: 1
+    },
+    toolBar: {
+        display: 'flex',
+        justifyContent: 'flex-end'
     }
 }));

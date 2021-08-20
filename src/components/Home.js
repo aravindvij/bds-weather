@@ -23,6 +23,7 @@ import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
+import Navbar from './NavBar';
 
 export default function Home() {
 
@@ -104,11 +105,13 @@ export default function Home() {
 
     return (
         <div className={classes.home}>
+            <Navbar></Navbar>
             <input type="file" onChange={importExcel}></input>
             <MaterialTable icons={tableIcons}
                 title="State data" options={{
                     paging: false, sorting: true
-                }} data={data} columns={colDefs}></MaterialTable>
+                }} data={data} columns={colDefs}>
+            </MaterialTable>
         </div>
     );
 }

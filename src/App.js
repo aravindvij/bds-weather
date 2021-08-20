@@ -5,11 +5,13 @@ import { Route } from 'react-router-dom';
 import SignInForm from './components/SignInForm';
 import Weather from './components/Weather';
 import Home from './components/Home';
+import Navbar from './components/NavBar';
 
 function App() {
 
   return (
     <div>
+      {/* {localStorage.getItem("token", 'true') && <Navbar></Navbar>} */}
       <BrowserRouter>
         <Switch>
           <Route path="/signup">

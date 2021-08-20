@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 import { useStyles } from './styles';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import Navbar from './NavBar';
 
 export default function Weather() {
 
@@ -33,18 +34,21 @@ export default function Weather() {
 
     console.log(weather);
     return (
-        <div className={classes.weather}>
-            {weather &&
-                <div>
-                    <p>March 12</p>
-                    {weather.init}
-                </div>
-            }
-            {weather.dataseries && weather.dataseries.map(elem => {
-                <div>
-                    {elem.cloudcover}
-                </div>
-            })}
-        </div >
+        <>
+            <Navbar></Navbar>
+            <div className={classes.weather}>
+                {weather &&
+                    <div>
+                        <p>March 12</p>
+                        {weather.init}
+                    </div>
+                }
+                {weather.dataseries && weather.dataseries.map(elem => {
+                    <div>
+                        {elem.cloudcover}
+                    </div>
+                })}
+            </div >
+        </>
     );
 }
