@@ -13,11 +13,18 @@ export default function SignInForm() {
         event.preventDefault();
 
         const requestBody = { name, password };
-        console.log(requestBody);
 
-        axios.post('https://sheet.best/api/sheets/f23eb6a7-6165-4e11-9be3-4dd2ef1a8f3b', requestBody)
+        axios.get('https://sheet.best/api/sheets/f23eb6a7-6165-4e11-9be3-4dd2ef1a8f3b', {
+            params: { name: name, password: password }
+        })
             .then(response => {
-                console.log(response.data);
+                console.log(response);
+                if (response.data.some(user => user.name === name && user.password === password)) {
+                    console.log('success');
+                } else {
+                    console.log('failed');
+                }
+
             })
     }
 
