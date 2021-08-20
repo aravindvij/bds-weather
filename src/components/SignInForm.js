@@ -1,8 +1,25 @@
 import '../App.css';
 import { TextField, Button, Link } from '@material-ui/core';
 import { useStyles } from './styles';
+import axios from 'axios';
+import { useState } from 'react';
 
 export default function SignInForm() {
+
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const requestBody = { name, password };
+        console.log(requestBody);
+
+        axios.post('https://sheet.best/api/sheets/f23eb6a7-6165-4e11-9be3-4dd2ef1a8f3b', requestBody)
+            .then(response => {
+                console.log(response.data);
+            })
+    }
 
     const classes = useStyles();
     const sign_in_icon = "./signin-image.webp";
@@ -11,19 +28,18 @@ export default function SignInForm() {
         <div className="App">
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <img alt="sign-in-logo" src={sign_in_icon}></img>
-                <Link href="/signin" style={{ color: '#000000', textAlign: 'center', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</Link>
+                <Link href="/signup" style={{ color: '#000000', textAlign: 'center', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</Link>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <form className={classes.root}>
-                    <TextField label="Your Name" required />
-                    <TextField label="Password" type="password" required />
-                </form>
-                <div style={{ padding: '16px' }}>
-                    {/* <Button variant="contained" color="primary" onClick={handleOpen}> */}
-                    <Button variant="contained" color="primary" >
+                <form className={classes.root} onSubmit={handleSubmit}>
+                    <TextField label="Your Name" required value={name}
+                        onInput={e => setName(e.target.value)} />
+                    <TextField label="Password" type="password" required value={password}
+                        onInput={e => setPassword(e.target.value)} />
+                    <Button variant="contained" color="primary" type="submit">
                         Login
   </Button>
-                </div>
+                </form>
             </div>
         </div>
     );
