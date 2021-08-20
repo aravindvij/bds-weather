@@ -28,5 +28,10 @@ export const useStyles = makeStyles(theme => ({
         '& p': {
             color: 'yellow'
         }
+    },
+    home: {
+        height: 'auto',
+        margin: '10px',
+        padding: '10px'
     }
 }));

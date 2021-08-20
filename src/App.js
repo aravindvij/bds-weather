@@ -4,6 +4,7 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import SignInForm from './components/SignInForm';
 import Weather from './components/Weather';
+import Home from './components/Home';
 
 function App() {
 
@@ -17,9 +18,9 @@ function App() {
           <Route path="/signin">
             <SignInForm />
           </Route>
-          {/* <Route path="/home">
+          <Route path="/home">
             <Home />
-          </Route> */}
+          </Route>
           <Route path="/weather">
             <Weather />
           </Route>
