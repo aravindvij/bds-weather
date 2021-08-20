@@ -11,7 +11,7 @@ export default function SignInForm() {
         <div className="App">
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <img alt="sign-in-logo" src={sign_in_icon}></img>
-                <Link style={{ color: '#000000', textAlign: 'center', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</Link>
+                <Link href="/signin" style={{ color: '#000000', textAlign: 'center', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</Link>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <form className={classes.root}>
