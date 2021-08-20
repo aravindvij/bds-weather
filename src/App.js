@@ -1,6 +1,6 @@
 import './App.css';
 import SignUpForm from './components/SignUpForm';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import SignInForm from './components/SignInForm';
 import Weather from './components/Weather';
@@ -18,12 +18,16 @@ function App() {
           <Route path="/signin">
             <SignInForm />
           </Route>
+          {/* {localStorage.getItem("token", 'true') ? */}
           <Route path="/home">
             <Home />
           </Route>
+          {/* : <Redirect to="/signin" />} */}
+          {/* {localStorage.getItem("token", 'true') ? */}
           <Route path="/weather">
             <Weather />
-          </Route>
+          </Route> :
+            {/* // <Redirect to="/signin" />} */}
           <Route path="/">
             <SignUpForm />
           </Route>

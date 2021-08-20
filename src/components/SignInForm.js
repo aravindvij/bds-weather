@@ -3,16 +3,17 @@ import { TextField, Button, Link } from '@material-ui/core';
 import { useStyles } from './styles';
 import axios from 'axios';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 export default function SignInForm() {
 
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
+    const history = useHistory();
+
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        const requestBody = { name, password };
 
         axios.get('https://sheet.best/api/sheets/f23eb6a7-6165-4e11-9be3-4dd2ef1a8f3b', {
             params: { name: name, password: password }
@@ -20,7 +21,9 @@ export default function SignInForm() {
             .then(response => {
                 console.log(response);
                 if (response.data.some(user => user.name === name && user.password === password)) {
+                    localStorage.setItem("token", 'true');
                     console.log('success');
+                    history.push("/home");
                 } else {
                     console.log('failed');
                 }
