@@ -16,19 +16,27 @@ export default function Weather() {
 
     const classes = useStyles();
 
+    const dateObj = new Date();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[dateObj.getMonth()];
+    const day = dateObj.getUTCDate();
+
     const sign_up_icon = "./signup-image.webp";
 
-    // axios.get('https://weatherbit-v1-mashape.p.rapidapi.com/alerts', {
-    //     params: { lat: 38.5, lon: -77.5 }, headers: {
-    //         'x-rapidapi-key': '33e171f288msh7aab9be8834de80p1cd701jsn35dccdd81c80',
-    //         'x-rapidapi-host': 'weatherbit-v1-mashape.p.rapidapi.com'
-    //     }
     useEffect(() => {
         const getWeather = async () => {
             try {
-                const res = await axios.get(
-                    `https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0`,
-                );
+                // const res = await axios.get(
+                //     `https://www.7timer.info/bin/astro.php?lon=113.2&lat=23.1&ac=0&unit=metric&output=json&tzshift=0`,
+                // );
+                const res = await axios.get('https://weatherbit-v1-mashape.p.rapidapi.com/alerts', {
+                    params: { lat: 38.5, lon: -77.5 }, headers: {
+                        'x-rapidapi-key': '33e171f288msh7aab9be8834de80p1cd701jsn35dccdd81c80',
+                        'x-rapidapi-host': 'weatherbit-v1-mashape.p.rapidapi.com'
+                    }
+                });
                 setWeather(res.data);
             } catch (e) {
                 console.log(e);
@@ -43,8 +51,8 @@ export default function Weather() {
             <Navbar></Navbar>
             <div className={classes.weather}>
                 <div className={classes.city}>
-                    <label>Select City</label>
-                    <select style={{ width: '100px', margin: '0 10px' }} onChange={handleChange} value={city}>
+                    <select className={classes.select} onChange={handleChange} value={city}>
+                        <option value="" disabled selected>Select</option>
                         <option value="Delhi">Delhi</option>
                         <option value="Khariv">Khariv</option>
                         <option value="Tokyo">Tokyo</option>
@@ -52,9 +60,15 @@ export default function Weather() {
                 </div>
                 {weather &&
                     <div className={classes.weatherDisplay}>
-                        <p>March 12</p>
+                        <p>{month} {day}</p>
                         <p>{city}</p>
-                        {weather.init}
+                        <p>City : {weather.city_name}</p>
+                        <p>Country :{weather.country_code}</p>
+                        <p>lat: {weather.lat}</p>
+                        <p>lon: {weather.lon}</p>
+                        <p>state: {weather.state_code}</p>
+                        <p>timezone: {weather.timezone}</p>
+                        {/* {weather.init} */}
                     </div>
                 }
                 {weather.dataseries && weather.dataseries.map(elem => {

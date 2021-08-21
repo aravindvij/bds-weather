@@ -25,10 +25,27 @@ export const useStyles = makeStyles(theme => ({
             color: 'yellow'
         }
     },
+    flex: {
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    link: {
+        color: '#000000',
+        textAlign: 'center',
+        textDecoration: 'underline',
+        cursor: 'pointer'
+    },
     weatherDisplay: {
         margin: '100px 0',
+        padding: '0px 15px'
+    },
+    select: {
+        width: '100px',
+        margin: '0 10px',
+        background: 'yellow'
     },
     city: {
+        padding: '15px 10px',
         display: 'flex',
         justifyContent: 'flex-end'
     },

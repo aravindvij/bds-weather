@@ -36,11 +36,11 @@ export default function SignInForm() {
 
     return (
         <div className="App">
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className={classes.flex}>
                 <img alt="sign-in-logo" src={sign_in_icon}></img>
-                <Link href="/signup" style={{ color: '#000000', textAlign: 'center', textDecoration: 'underline', cursor: 'pointer' }}>Create an account</Link>
+                <Link href="/signup" className={classes.link}>Create an account</Link>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className={classes.flex}>
                 <form className={classes.root} onSubmit={handleSubmit}>
                     <TextField label="Your Name" required value={name}
                         onInput={e => setName(e.target.value)} />

@@ -30,7 +30,7 @@ export default function SignUpForm() {
 
     return (
         <div className="App">
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className={classes.flex}>
                 <form className={classes.root} onSubmit={handleSubmit} >
                     <TextField label="Your Name" required value={name}
                         onInput={e => setName(e.target.value)} />
@@ -45,9 +45,9 @@ export default function SignUpForm() {
   </Button>
                 </form>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className={classes.flex}>
                 <img alt="sign-up-logo" src={sign_up_icon}></img>
-                <Link href="/signin" style={{ color: '#000000', textAlign: 'center', textDecoration: 'underline', cursor: 'pointer' }}>I am already a member</Link>
+                <Link href="/signin" className={classes.link}>I am already a member</Link>
             </div>
         </div>
     );
