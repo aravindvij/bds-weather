@@ -1,5 +1,5 @@
 import '../App.css';
-import { Button } from '@material-ui/core';
+import { Button, Select, InputLabel, FormControl, MenuItem } from '@material-ui/core';
 import { useStyles } from './styles';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -8,6 +8,11 @@ import Navbar from './NavBar';
 export default function Weather() {
 
     const [weather, setWeather] = useState([]);
+    const [city, setCity] = useState('');
+
+    const handleChange = (event) => {
+        setCity(event.target.value);
+    };
 
     const classes = useStyles();
 
@@ -31,15 +36,24 @@ export default function Weather() {
         };
         getWeather();
     }, []);
-
     console.log(weather);
+
     return (
         <>
             <Navbar></Navbar>
             <div className={classes.weather}>
+                <div className={classes.city}>
+                    <label>Select City</label>
+                    <select style={{ width: '100px', margin: '0 10px' }} onChange={handleChange} value={city}>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Khariv">Khariv</option>
+                        <option value="Tokyo">Tokyo</option>
+                    </select>
+                </div>
                 {weather &&
-                    <div>
+                    <div className={classes.weatherDisplay}>
                         <p>March 12</p>
+                        <p>{city}</p>
                         {weather.init}
                     </div>
                 }

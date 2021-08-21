@@ -19,15 +19,18 @@ export const useStyles = makeStyles(theme => ({
     weather: {
         backgroundImage: `url(${backgroundImg})`,
         width: '100vw',
-        height: '100vh',
+        height: 'calc(100vh - 64px)',
         color: '#ffffff',
-        display: 'flex',
-        '& div': {
-            alignSelf: 'center'
-        },
         '& p': {
             color: 'yellow'
         }
+    },
+    weatherDisplay: {
+        margin: '100px 0',
+    },
+    city: {
+        display: 'flex',
+        justifyContent: 'flex-end'
     },
     home: {
         height: 'auto',
