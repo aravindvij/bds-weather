@@ -106,12 +106,15 @@ export default function Home() {
     return (
         <div className={classes.home}>
             <Navbar></Navbar>
-            <input type="file" onChange={importExcel}></input>
-            <MaterialTable icons={tableIcons}
-                title="State data" options={{
-                    paging: false, sorting: true
-                }} data={data} columns={colDefs}>
-            </MaterialTable>
+            <div className={classes.table}>
+                <p>**Upload state_wise_data.csv</p>
+                <input type="file" onChange={importExcel}></input>
+                <MaterialTable icons={tableIcons}
+                    title="State data" options={{
+                        paging: false, sorting: true
+                    }} data={data} columns={colDefs}>
+                </MaterialTable>
+            </div>
         </div>
     );
 }

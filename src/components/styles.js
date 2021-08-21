@@ -50,9 +50,10 @@ export const useStyles = makeStyles(theme => ({
         justifyContent: 'flex-end'
     },
     home: {
-        height: 'auto',
-        margin: '10px',
-        padding: '10px'
+        height: 'auto'
+    },
+    table: {
+        padding: '15px'
     },
     appBar: {
         flexGrow: 1
