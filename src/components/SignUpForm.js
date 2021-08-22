@@ -7,6 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { useHistory } from 'react-router-dom';
 
 export default function SignUpForm() {
 
@@ -14,6 +15,8 @@ export default function SignUpForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPassword, setRepeatPassword] = useState('');
+
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,8 +26,11 @@ export default function SignUpForm() {
 
         axios.post('https://sheet.best/api/sheets/f23eb6a7-6165-4e11-9be3-4dd2ef1a8f3b', requestBody)
             .then(response => {
-                console.log(response.data);
-            })
+                console.log(response);
+                if (response.status === 200) {
+                    history.push("/signin");
+                }
+            });
     }
 
     const classes = useStyles();
