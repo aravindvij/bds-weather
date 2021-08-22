@@ -1,9 +1,11 @@
 import '../App.css';
-import { TextField, Button, Link } from '@material-ui/core';
+import { TextField, Button, Link, InputAdornment } from '@material-ui/core';
 import { useStyles } from './styles';
 import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import LockIcon from '@material-ui/icons/Lock';
 
 export default function SignInForm() {
 
@@ -42,9 +44,21 @@ export default function SignInForm() {
             </div>
             <div className={classes.flex}>
                 <form className={classes.root} onSubmit={handleSubmit}>
-                    <TextField label="Your Name" required value={name}
+                    <TextField InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <AccountCircle />
+                            </InputAdornment>
+                        ),
+                    }} label="Your Name" required value={name}
                         onInput={e => setName(e.target.value)} />
-                    <TextField label="Password" type="password" required value={password}
+                    <TextField InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <LockIcon />
+                            </InputAdornment>
+                        ),
+                    }} label="Password" type="password" required value={password}
                         onInput={e => setPassword(e.target.value)} />
                     <Button variant="contained" color="primary" type="submit">
                         Login

@@ -1,8 +1,12 @@
 import '../App.css';
-import { TextField, Button, Link } from '@material-ui/core';
+import { TextField, Button, Link, InputAdornment } from '@material-ui/core';
 import { useStyles } from './styles';
 import { useState } from 'react';
 import axios from 'axios';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MailIcon from '@material-ui/icons/Mail';
+import LockIcon from '@material-ui/icons/Lock';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 export default function SignUpForm() {
 
@@ -32,17 +36,41 @@ export default function SignUpForm() {
         <div className="App">
             <div className={classes.flex}>
                 <form className={classes.root} onSubmit={handleSubmit} >
-                    <TextField label="Your Name" required value={name}
+                    <TextField InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <AccountCircle />
+                            </InputAdornment>
+                        ),
+                    }} label="Your Name" required value={name}
                         onInput={e => setName(e.target.value)} />
-                    <TextField label="Your Email" type="email" required value={email}
+                    <TextField InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <MailIcon />
+                            </InputAdornment>
+                        ),
+                    }} label="Your Email" type="email" required value={email}
                         onInput={e => setEmail(e.target.value)} />
-                    <TextField label="Password" type="password" required value={password}
+                    <TextField InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <LockIcon />
+                            </InputAdornment>
+                        ),
+                    }} label="Password" type="password" required value={password}
                         onInput={e => setPassword(e.target.value)} />
-                    <TextField label="Repeat your password" type="password" required value={repeatPassword}
+                    <TextField InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <LockOutlinedIcon />
+                            </InputAdornment>
+                        ),
+                    }} label="Repeat your password" type="password" required value={repeatPassword}
                         onInput={e => setRepeatPassword(e.target.value)} />
                     <Button variant="contained" color="primary" type="submit">
                         Register
-  </Button>
+                    </Button>
                 </form>
             </div>
             <div className={classes.flex}>
