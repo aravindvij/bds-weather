@@ -24,6 +24,8 @@ export default function Navbar() {
         <div className={classes.appBar}>
             <AppBar position="static">
                 <Toolbar className={classes.toolBar}>
+                    <Button color="inherit" href="/home">Home</Button>
+                    <Button color="inherit" href="/weather">Weather</Button>
                     <Button color="inherit" onClick={handleLogout}>Logout</Button>
                 </Toolbar>
             </AppBar>
